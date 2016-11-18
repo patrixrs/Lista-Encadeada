@@ -1,4 +1,3 @@
-
 public class Encadeamento implements Iterable<String> {
 
 	private class ListaIterator implements Iterador {
@@ -11,7 +10,7 @@ public class Encadeamento implements Iterable<String> {
 			if (current == null)
 				return head != null;
 			return current.getNext() != null;
-		}
+		}// ---
 
 		@Override
 		public String next() {
@@ -22,7 +21,7 @@ public class Encadeamento implements Iterable<String> {
 				current = current.getNext();
 			}
 			return current.dado;
-		}
+		}// ---
 
 		@Override
 		public void insert(String dado) {
@@ -36,7 +35,7 @@ public class Encadeamento implements Iterable<String> {
 			} else {
 				previous.setNext(node);
 			}
-		}
+		}// ---
 		
 		@Override
 		public void append(String dado) {
@@ -50,7 +49,7 @@ public class Encadeamento implements Iterable<String> {
 			if (proximo == null) {
 				tail = node;
 			}
-		}
+		}// ---
 		
 		@Override
 		public void remove() {
@@ -64,8 +63,8 @@ public class Encadeamento implements Iterable<String> {
 			if (current == head) {
 				head = head.getNext();
 			}
-		}		
-	}
+		}// ---
+	}// fim da classe LISTA ITERADOR
 	
 	private class Node {
 		public final String dado;
@@ -81,7 +80,7 @@ public class Encadeamento implements Iterable<String> {
 		public Node getNext() {
 			return next;
 		}
-	}
+	}// fim da classe NODE
 	
 	private Node head = null;
 	private Node tail = null;
@@ -94,7 +93,7 @@ public class Encadeamento implements Iterable<String> {
 			tail.setNext(node);
 		}
 		tail  = node;
-	}
+	}// ---
 
 	public void pushFront(String dado) {
 		Node node = new Node(dado);
@@ -104,7 +103,7 @@ public class Encadeamento implements Iterable<String> {
 			node.setNext(head);
 		}
 		head = node;
-	}
+	}// ---
 
 	public void print() {
 		Node iter = head;
@@ -112,10 +111,11 @@ public class Encadeamento implements Iterable<String> {
 			System.out.println(iter.dado);
 			iter = iter.getNext();
 		}
-	}
+	}// ---
 
 	@Override
 	public Iterador iterator() {
 		return new ListaIterator() ;
-	}
-}
+	}// ---
+	
+}// fim da classe ENCADEAMENTO
