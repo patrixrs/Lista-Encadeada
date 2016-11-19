@@ -8,6 +8,14 @@ public class Lista {
 		this.nome = nome;		
 	}//fim lista
 	
+	public int getIndex() {
+		return index;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
 	@Override
 	public String toString() {
 		return	"[" + index + "]" +	" " + nome + "\n";

@@ -12,22 +12,10 @@ public class ListaEncadeada {
 		}
 	}// fim do MAIN
 	
+	private Encadeamento lista = new Encadeamento();
+	
 	private void run() throws FileNotFoundException {
-		geraLista();
-
-		/*
-		 * Encadeamento lista = new Encadeamento();
-		 * 
-		 * lista.append("Rafael");
-		 * lista.append("Antonio");
-		 * lista.append("Guilherme");
-		 * lista.append("Ivonei");
-		 * lista.pushFront("Aline");
-		 *  
-		 * Iterador iter = lista.iterator(); iter.next(); iter.next();
-		 * iter.append("Quarto"); iter.insert("Segundo");
-		 * 
-		 */
+		geraLista();		
 	}// fim do RUN
 
 	public void geraLista() throws FileNotFoundException {		
@@ -36,10 +24,11 @@ public class ListaEncadeada {
 		//reader.skipLine(); // cabecalho
 		while (reader.hasNext()) {
 			Lista dados = reader.readObject();
-			
-			System.out.println(dados); // printa o arquivo csv
+			lista.append("[" + dados.getIndex() + "] " + dados.getNome());			
+			//System.out.println(dados); // printa o arquivo csv
 		}
 		reader.close();
+		lista.print();// printa a lista encadeada
 	}// fim geraLista
 	
 }// fim da CLASSE
