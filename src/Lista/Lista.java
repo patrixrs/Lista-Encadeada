@@ -1,3 +1,4 @@
+package Lista;
 public class Lista {
 	private int index;
 	private String nome;

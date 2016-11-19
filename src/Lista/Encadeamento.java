@@ -1,3 +1,5 @@
+package Lista;
+
 public class Encadeamento implements Iterable<String> {
 
 	private class ListaIterator implements Iterador {

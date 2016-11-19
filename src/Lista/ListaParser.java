@@ -1,3 +1,4 @@
+package Lista;
 import java.util.Scanner;
 
 public class ListaParser implements Parser<Lista> {

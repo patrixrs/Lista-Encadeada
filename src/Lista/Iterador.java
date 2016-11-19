@@ -1,3 +1,4 @@
+package Lista;
 import java.util.Iterator;
 
 public interface Iterador extends Iterator<String> {
