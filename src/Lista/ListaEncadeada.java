@@ -32,7 +32,7 @@ public class ListaEncadeada {
 
 	public void geraLista() throws FileNotFoundException {		
 		Parser<Lista> parser = new ListaParser();
-		LeitorCSV<Lista> reader = new LeitorCSV<>("Lista_Nomes.csv", parser);
+		LeitorCSV<Lista> reader = new LeitorCSV<>("src/lista/Lista_Nomes.csv", parser);
 		//reader.skipLine(); // cabecalho
 		while (reader.hasNext()) {
 			Lista dados = reader.readObject();

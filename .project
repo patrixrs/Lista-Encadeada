@@ -16,9 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>src/Lista_Nomes.csv</name>
+			<name>src/Lista/Lista_Nomes.csv</name>
 			<type>1</type>
-			<location>C:/Users/patri/Desktop/GitSenac/Lista-Encadeada/Lista_Nomes.csv</location>
+			<location>C:/Users/patri/Desktop/GitSenac/Lista-Encadeada/src/Lista/Lista_Nomes.csv</location>
 		</link>
 	</linkedResources>
 </projectDescription>
