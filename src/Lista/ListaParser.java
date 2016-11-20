@@ -1,16 +1,16 @@
 package Lista;
 import java.util.Scanner;
 
-public class ListaParser implements Parser<Lista> {
+public class ListaParser implements Parser<Conteudo> {
 		
-	public Lista parse(String dados) {		
+	public Conteudo parse(String dados) {		
 		Scanner scan = new Scanner(dados);
 		
 		scan.useDelimiter(",");
 		int index = scan.nextInt();
 		String nome = scan.next();
 		
-		Lista lista = new Lista(index, nome);
+		Conteudo lista = new Conteudo(index, nome);
 		
 		scan.close();
 		return lista;

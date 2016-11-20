@@ -1,6 +1,7 @@
 package Lista;
 
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class ListaEncadeada {
 
@@ -37,7 +38,8 @@ public class ListaEncadeada {
 					lista.print();				
 					break;
 				case 2:
-					System.out.println("Em construção...");
+					pesquisa();
+					//System.out.println("Em construção...");
 					break;
 				case 3:
 					
@@ -51,12 +53,25 @@ public class ListaEncadeada {
 			} while (true);		
 	}// fim do RUN
 
+	@SuppressWarnings("resource")
+	private void pesquisa() {
+		System.out.println("Insira o nome para pesquisar:");
+		Scanner e = new Scanner(System.in);
+		String novo = e.nextLine().toUpperCase();
+		if(lista.search(novo) != "false"){
+               System.out.println("Nome ja existe na lista!");
+               System.out.println(lista.search(novo));
+		}else{
+               System.out.println("Nome não existe na lista!");               
+		}
+	}
+
 	public void geraLista() throws FileNotFoundException {		
-		Parser<Lista> parser = new ListaParser();
-		LeitorCSV<Lista> reader = new LeitorCSV<>("src/lista/Lista_Nomes.csv", parser);
+		Parser<Conteudo> parser = new ListaParser();
+		LeitorCSV<Conteudo> reader = new LeitorCSV<>("src/lista/Lista_Nomes.csv", parser);
 		//reader.skipLine(); // cabecalho
 		while (reader.hasNext()) {
-			Lista dados = reader.readObject();
+			Conteudo dados = reader.readObject();
 			lista.append("[" + dados.getIndex() + "] " + dados.getNome());			
 			//System.out.println(dados); // printa o arquivo csv
 		}
