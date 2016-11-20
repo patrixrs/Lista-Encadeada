@@ -17,7 +17,7 @@ public class ListaEncadeada {
 	private Encadeamento lista = new Encadeamento();
 	
 	private void run() throws FileNotFoundException {
-		geraLista();
+		geraLista();// leitura do arquivo e inclusão na lista
 		
 		Menu menu1 = new Menu();
 		
@@ -39,7 +39,6 @@ public class ListaEncadeada {
 					break;
 				case 2:
 					pesquisa();
-					//System.out.println("Em construção...");
 					break;
 				case 3:
 					
@@ -50,21 +49,23 @@ public class ListaEncadeada {
 				default:
 					break;
 				}
-			} while (true);		
+			} while (true);
+		// fim do menu
+		
 	}// fim do RUN
 
 	@SuppressWarnings("resource")
 	private void pesquisa() {
 		System.out.println("Insira o nome para pesquisar:");
 		Scanner e = new Scanner(System.in);
-		String novo = e.nextLine().toUpperCase();
+		String novo = e.nextLine().toUpperCase();// transforma qqr coisa digitada em maiuscula
 		if(lista.search(novo) != "false"){
                System.out.println("Nome ja existe na lista!");
                System.out.println(lista.search(novo));
 		}else{
                System.out.println("Nome não existe na lista!");               
 		}
-	}
+	}// fim da pesquisa
 
 	public void geraLista() throws FileNotFoundException {		
 		Parser<Conteudo> parser = new ListaParser();

@@ -149,15 +149,15 @@ public class Encadeamento implements Iterable<String> {
 	public String search(String valor) {
 		Node aux = getHead();
 		while (aux != null) {
-			String[] textoSeparado = aux.getDado().split(" ");			
-			String dado = textoSeparado[1];
-			if (valor.equals(dado)) {
-				return aux.getDado();
+			String[] textoSeparado = aux.getDado().split(" ");// separa a string		
+			String dado = textoSeparado[1];// salva somente o nome sem o index
+			if (valor.equals(dado)) {// compara o valor digitado com o nome da lista
+				return aux.getDado();// retorna o conteudo completo com index e nome
 			}
 			aux = aux.getNext();
 		}		
-		return "false";
-	}
+		return "false";// retorna a string false se não tem na lista
+	}// ---
 
 	@Override
 	public Iterador iterator() {
