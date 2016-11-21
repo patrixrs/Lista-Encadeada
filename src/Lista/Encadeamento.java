@@ -69,7 +69,7 @@ public class Encadeamento implements Iterable<String> {
 	}// fim da classe ListaIterator
 
 	private class Node {
-		public final String dado;
+		public String dado;
 		private Node next;
 		private Node prev;
 
@@ -77,24 +77,32 @@ public class Encadeamento implements Iterable<String> {
 			this.dado = dado;
 			this.next = null;
 		}
+		
+		public Node() {
+			//construtor vazio
+		}
+		
+		public void setDado(String dado) {// define valor ao nó
+			this.dado = dado;
+		}
 
-		public String getDado() {
+		public String getDado() {// retorna valor do nó
 			return dado;
 		}
 
-		public void setNext(Node next) {
+		public void setNext(Node next) {// define proximo nó
 			this.next = next;
 		}
 
-		public Node getNext() {
+		public Node getNext() {// retorna proximo nó
 			return next;
 		}
 
-		public void setPrev(Node prev) {
+		public void setPrev(Node prev) {// define nó anterior
 			this.prev = prev;
 		}
 
-		public Node getPrev() {
+		public Node getPrev() {// retorna nó anterior
 			return prev;
 		}
 	}// fim da classe Node
@@ -102,23 +110,23 @@ public class Encadeamento implements Iterable<String> {
 	private Node head = null;
 	private Node tail = null;
 
-	public Node getHead() {
+	public Node getHead() {// retorna primeir nó
 		return head;
 	}
 
-	public void setHead(Node head) {
+	public void setHead(Node head) {// define primeiro nó
 		this.head = head;
 	}
 
-	public Node getTail() {
+	public Node getTail() {// retorna ultimo nó
 		return tail;
 	}
 
-	public void setTail(Node tail) {
+	public void setTail(Node tail) {// define ultimo nó
 		this.tail = tail;
 	}
 
-	public void append(String dado) {
+	public void append(String dado) {// insere depois
 		Node node = new Node(dado);
 		if (tail == null) {
 			head = node;
@@ -128,7 +136,7 @@ public class Encadeamento implements Iterable<String> {
 		tail = node;
 	}// ---
 
-	public void pushFront(String dado) {
+	public void pushFront(String dado) {// insere antes
 		Node node = new Node(dado);
 		if (head == null) {
 			tail = node;
@@ -136,28 +144,29 @@ public class Encadeamento implements Iterable<String> {
 			node.setNext(head);
 		}
 		head = node;
+		//System.out.println(dado);
 	}// ---
 
-	public void print() {
-		Node iter = head;
-		while (iter != null) {
-			System.out.println(iter.dado);
-			iter = iter.getNext();
+	public void print() {// printa a lista
+		Node aux = head;
+		int i = 1;
+		while (aux != null) {
+			System.out.println("[" + i + "] " + aux.dado);
+			aux = aux.getNext();
+			i++;// gera index só p exibição
 		}
 	}// ---
 	
-	public String search(String valor) {
+	public String search(String valor) {// busca na lista
 		Node aux = getHead();
 		while (aux != null) {
-			String[] textoSeparado = aux.getDado().split(" ");// separa a string		
-			String dado = textoSeparado[1];// salva somente o nome sem o index
-			if (valor.equals(dado)) {// compara o valor digitado com o nome da lista
+			if (valor.equals(aux.getDado())) {// compara o valor digitado com o nome da lista
 				return aux.getDado();// retorna o conteudo completo com index e nome
 			}
 			aux = aux.getNext();
 		}		
 		return "false";// retorna a string false se não tem na lista
-	}// ---
+	}// ---	
 
 	@Override
 	public Iterador iterator() {

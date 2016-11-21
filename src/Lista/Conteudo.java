@@ -23,6 +23,6 @@ public class Conteudo {
 
 	@Override
 	public String toString() {
-		return	"[" + index + "]" +	" " + nome + "\n";
+		return	nome + "\n";
 	}//fim toString
 }//fim da classe LISTA

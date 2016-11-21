@@ -7,10 +7,11 @@ public class ListaParser implements Parser<Conteudo> {
 		Scanner scan = new Scanner(dados);
 		
 		scan.useDelimiter(",");
-		int index = scan.nextInt();
+		scan.next();
+		//int index = scan.nextInt();
 		String nome = scan.next();
 		
-		Conteudo lista = new Conteudo(index, nome);
+		Conteudo lista = new Conteudo(nome);
 		
 		scan.close();
 		return lista;

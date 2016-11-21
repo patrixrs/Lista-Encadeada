@@ -15,11 +15,10 @@ public class ListaEncadeada {
 	}// fim do MAIN
 	
 	private Encadeamento lista = new Encadeamento();
+	Menu menu1 = new Menu();
 	
 	private void run() throws FileNotFoundException {
-		geraLista();// leitura do arquivo e inclusão na lista
-		
-		Menu menu1 = new Menu();
+		geraLista();// leitura do arquivo e inclusão na lista		
 		
 		Opcao listar = new Opcao("Mostra lista completa");
 		Opcao pesquisar = new Opcao("Pesquisar NOME na lista");
@@ -63,21 +62,25 @@ public class ListaEncadeada {
                System.out.println("Nome ja existe na lista!");
                System.out.println(lista.search(novo));
 		}else{
-               System.out.println("Nome não existe na lista!");               
+               System.out.println("Nome não existe na lista!"+
+            		   			  "\nDeseja inserir na lista?"+
+            		   			  "\n1-Sim  2-Nao");
+               if(e.nextInt() == 1){
+            	   System.out.println(novo);
+            	   lista.pushFront(novo);
+               }
 		}
 	}// fim da pesquisa
 
 	public void geraLista() throws FileNotFoundException {		
 		Parser<Conteudo> parser = new ListaParser();
 		LeitorCSV<Conteudo> reader = new LeitorCSV<>("src/lista/Lista_Nomes.csv", parser);
-		//reader.skipLine(); // cabecalho
+		//reader.skipLine(); // cabecalho		
 		while (reader.hasNext()) {
 			Conteudo dados = reader.readObject();
-			lista.append("[" + dados.getIndex() + "] " + dados.getNome());			
-			//System.out.println(dados); // printa o arquivo csv
+			lista.append(dados.getNome());			
 		}
-		reader.close();
-		//lista.print();// printa a lista encadeada
+		reader.close();		
 	}// fim geraLista
 	
 }// fim da CLASSE
