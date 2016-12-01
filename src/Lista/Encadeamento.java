@@ -53,12 +53,13 @@ public class Encadeamento implements Iterable<String> {
 			}
 		}// ---
 
-		@Override
-		public void remove() {
+		
+		@SuppressWarnings("unused")
+		public void remove(Node dado) {
 			if (current == null) {
 				throw new IllegalStateException("Use next()!");
 			}
-			previous.setNext(current.getNext());
+			previous.setNext(dado.getNext());
 			if (!hasNext()) {
 				tail = previous;
 			}
@@ -109,6 +110,8 @@ public class Encadeamento implements Iterable<String> {
 
 	private Node head = null;
 	private Node tail = null;
+	private Node anterior = null;
+	private boolean teste = false;
 
 	public Node getHead() {// retorna primeir nó
 		return head;
@@ -126,14 +129,24 @@ public class Encadeamento implements Iterable<String> {
 		this.tail = tail;
 	}
 
-	public void append(String dado) {// insere depois
-		Node node = new Node(dado);
-		if (tail == null) {
-			head = node;
+	public void append(String dado) {// insere depois			
+		Node node = new Node();
+		node.setDado(dado);
+		if (head == null) {
+			head  = node;
 		} else {
+			if(!teste){
+				head.setNext(node);
+				node.setPrev(head);
+				anterior = node;
+			}else{
+				node.setPrev(anterior);
+				anterior = node;
+			}
 			tail.setNext(node);
+			teste = true;
 		}
-		tail = node;
+		tail = node;		
 	}// ---
 
 	public void pushFront(String dado) {// insere antes
@@ -157,20 +170,36 @@ public class Encadeamento implements Iterable<String> {
 		}
 	}// ---
 	
-	public String search(String valor) {// busca na lista
+	public boolean search(String valor) {// busca na lista
 		Node aux = getHead();
 		while (aux != null) {
-			if (valor.equals(aux.getDado())) {// compara o valor digitado com o nome da lista
-				return aux.getDado();// retorna o conteudo completo com index e nome
+			if (valor.equals(aux.dado)) {// compara o valor digitado com o nome da lista
+				return true;
 			}
 			aux = aux.getNext();
 		}		
-		return "false";// retorna a string false se não tem na lista
+		return false;// retorna a string false se não tem na lista
 	}// ---	
 
 	@Override
 	public Iterador iterator() {
 		return new ListaIterator();
 	}// ---
+	
+	/*
+	public void remover(String rem) {
+		Node node = new Node(dado);
+		if(search(rem)){
+			node = 
+			node.setPrev();
+			anterior = node;
+		}
+	}
+	*/
+	
+	private void If(boolean search) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }// fim da classe Encadeamento
